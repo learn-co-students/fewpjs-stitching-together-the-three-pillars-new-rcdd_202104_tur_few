@@ -2,12 +2,12 @@
 
 let glyphStates = {
   "♡": "♥",
-  "♥": "♡"
+  "♥": "♡",
 };
 
 let colorStates = {
-  "red" : "",
-  "": "red"
+  red: "",
+  "": "red",
 };
 
 // STEP 1: This code is what lets JavaScript find the elements that we want to make clickable.
@@ -19,7 +19,7 @@ let colorStates = {
 function likeCallback(e) {
   let heart = e.target;
   mimicServerCall()
-    .then(function(serverMessage){
+    .then(function (serverMessage) {
       // STEP 2: Uncomment the next 3 lines.
       // We'll use Pillar 1 (DOM Manipulation) to update the screen and
       // mimic Pillar 3 (Server Communication) to only update the screen if the
@@ -29,7 +29,7 @@ function likeCallback(e) {
       // heart.innerText = glyphStates[heart.innerText];
       // heart.style.color = colorStates[heart.style.color];
     })
-    .catch(function(error) {
+    .catch(function (error) {
       alert("Something went wrong!");
     });
 }
@@ -40,23 +40,27 @@ function likeCallback(e) {
 // this code.
 
 //for (let glyph of articleHearts) {
-  //glyph.addEventListener("click", likeCallback);
+//glyph.addEventListener("click", likeCallback);
 //}
 
-// STEP 4: 
+// STEP 4:
 
 // When all the STEPs' code changes have been complete, you'll be able to see a
 // working demonstration of our reference example. Sure, it's maybe not as
 // pretty as a professional site, but they're only different from our site in
 // style, not substance.
 
+for (let glyph of articleHearts) {
+  glyph.addEventListener("click", likeCallback);
+}
+
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
 //------------------------------------------------------------------------------
 
 function mimicServerCall() {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
       resolve("Pretend remote server notified of action!");
     }, 300);
   });
